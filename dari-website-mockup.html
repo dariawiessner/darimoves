@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DARI. — Coaching · Yoga · Pole Dance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#2E2A3D;
+    --ink-soft:#5C5870;
+    --dark-blue:#707FB6;
+    --mid-blue:#7F90D5;
+    --pink:#E0577A;
+    --butter:#FAE29E;
+    --butter-strong:#F2C14E;
+    --cream:#EDF8FE;
+    --paper:#FBF7F1;
+    --paper-2:#F4EFE6;
+    --radius:22px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter', sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .display{font-family:'Fraunces', serif;}
+  .mono{font-family:'IBM Plex Mono', monospace; letter-spacing:.02em;}
+  .wrap{max-width:1100px; margin:0 auto; padding:0 28px;}
+  a{color:inherit; text-decoration:none;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(251,247,241,.88);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(46,42,61,.08);
+  }
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; padding:16px 28px;}
+  .logo{display:flex; align-items:center; gap:10px; font-family:'Fraunces', serif; font-weight:600; font-size:20px; letter-spacing:.01em;}
+  .logo .dot{color:var(--pink);}
+  .logo-mark{
+    width:34px; height:34px; border-radius:50%; object-fit:cover; display:block;
+    filter:hue-rotate(3deg) saturate(59%) brightness(1.06);
+  }
+  .navlinks{display:flex; gap:28px; font-size:14px; font-weight:500;}
+  .navlinks a{opacity:.75; transition:opacity .2s;}
+  .navlinks a:hover{opacity:1;}
+  .nav-cta{
+    background:var(--ink); color:var(--paper); padding:9px 18px; border-radius:100px;
+    font-size:13px; font-weight:600;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{padding:96px 0 60px; position:relative; overflow:hidden;}
+  .hero-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:40px; align-items:center;}
+  .eyebrow{
+    font-size:13px; text-transform:uppercase; letter-spacing:.14em; color:var(--pink);
+    font-weight:600; margin-bottom:18px; display:block;
+  }
+  .hero h1{
+    font-size:clamp(40px,6vw,64px); font-weight:500; line-height:1.02; letter-spacing:-.01em;
+    margin-bottom:14px;
+  }
+  .hero h1 em{font-style:italic; color:var(--dark-blue);}
+  .hero .subline{
+    font-family:'Fraunces', serif; font-style:italic; font-weight:500;
+    font-size:clamp(18px,2.4vw,22px); color:var(--pink); margin-bottom:22px;
+  }
+  .hero p.lead{font-size:18px; color:var(--ink-soft); max-width:520px; margin-bottom:32px;}
+  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--pink); color:#fff; padding:14px 26px; border-radius:100px;
+    font-weight:600; font-size:15px; display:inline-block; transition:transform .2s, box-shadow .2s;
+    box-shadow:0 8px 20px -6px rgba(224,87,122,.55);
+  }
+  .btn-primary:hover{transform:translateY(-2px);}
+  .btn-ghost{
+    border:1.5px solid rgba(46,42,61,.2); padding:13px 24px; border-radius:100px;
+    font-weight:600; font-size:15px;
+  }
+
+  /* overlapping circles signature — organic bubble cluster of traits */
+  .circles{position:relative; height:460px;}
+  .circle{
+    position:absolute; border-radius:50%; mix-blend-mode:multiply;
+    display:flex; align-items:center; justify-content:center; text-align:center; padding:8px;
+    font-family:'IBM Plex Mono', monospace; letter-spacing:.05em;
+    text-transform:uppercase; font-weight:500; color:#fff;
+    animation:float 7s ease-in-out infinite;
+  }
+  /* groß */
+  .circle.b1{width:180px; height:180px; background:var(--dark-blue); top:20px;  left:0px;   font-size:13px; animation-delay:0s;}
+  .circle.b2{width:180px; height:180px; background:var(--pink);      top:130px; left:150px; font-size:13px; animation-delay:.4s;}
+  .circle.b3{width:180px; height:180px; background:var(--mid-blue);  top:0px;   left:220px; font-size:13px; animation-delay:.8s;}
+  /* mittel */
+  .circle.b4{width:150px; height:150px; background:var(--butter); color:var(--ink); top:80px;  left:100px; font-size:11px; animation-delay:1.2s;}
+  .circle.b5{width:150px; height:150px; background:var(--butter); color:var(--ink); top:180px; left:300px; font-size:11px; animation-delay:1.6s;}
+  .circle.b6{width:150px; height:150px; background:var(--dark-blue);                top:270px; left:20px;  font-size:11px; animation-delay:2s;}
+  /* klein */
+  .circle.b7{width:120px; height:120px; background:var(--pink);                     top:330px; left:140px; font-size:10px; letter-spacing:.03em; animation-delay:2.4s;}
+  .circle.b8{width:120px; height:120px; background:var(--mid-blue);                 top:230px; left:240px; font-size:10px; letter-spacing:.03em; animation-delay:2.8s;}
+  .circle.b9{width:140px; height:140px; background:var(--butter-strong); color:var(--ink); top:310px; left:270px; font-size:11px; animation-delay:3.2s;}
+  .circle.b10{width:110px; height:110px; background:var(--butter-strong); color:var(--ink); top:50px;  left:330px; font-size:10px; letter-spacing:.03em; animation-delay:3.6s;}
+  @keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-10px);}
+  }
+  @media (prefers-reduced-motion: reduce){ .circle{animation:none;} }
+
+  /* ---------- SECTION generic ---------- */
+  section{padding:88px 0;}
+  .section-head{max-width:600px; margin-bottom:52px;}
+  .section-head .eyebrow{color:var(--dark-blue);}
+  .section-head h2{font-size:clamp(28px,4vw,38px); font-weight:500; letter-spacing:-.01em;}
+  .section-head .section-sub{font-family:'Fraunces',serif; font-style:italic; font-size:16px; color:var(--ink-soft); margin-top:8px;}
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--paper-2);}
+  .about-grid{display:grid; grid-template-columns:.75fr 1.25fr; gap:56px; align-items:center;}
+  .portrait{
+    aspect-ratio:4/5; border-radius:var(--radius);
+    overflow:hidden;
+  }
+  .portrait img{
+    width:100%; height:100%; object-fit:cover; display:block;
+  }
+  .about-copy p{font-size:16.5px; color:var(--ink-soft); margin-bottom:16px; max-width:560px;}
+  .values{display:flex; flex-wrap:wrap; gap:10px; margin-top:24px;}
+  .value-pill{
+    background:#fff; border:1px solid rgba(46,42,61,.1); padding:8px 16px; border-radius:100px;
+    font-size:13px; font-weight:500;
+  }
+
+  /* ---------- PILLARS ---------- */
+  .pillars-section{background:var(--paper-2);}
+  .pillars-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  .pillar{
+    border-radius:var(--radius); padding:34px; color:#fff; min-height:220px;
+    display:flex; flex-direction:column; justify-content:space-between;
+    transition:transform .25s, box-shadow .25s;
+  }
+  .pillar:hover{transform:translateY(-4px); box-shadow:0 16px 30px -18px rgba(46,42,61,.25);}
+  .pillar.p1{background:var(--dark-blue);}
+  .pillar.p2{background:var(--mid-blue);}
+  .pillar.p3{background:var(--pink);}
+  .pillar-mark{
+    width:44px; height:44px; border-radius:12px; margin-bottom:20px; background:rgba(255,255,255,.18);
+    display:flex; align-items:center; justify-content:center; font-family:'Fraunces',serif; font-size:20px; color:#fff;
+  }
+  .pillar h3{font-family:'Fraunces',serif; font-size:22px; font-weight:500; margin-bottom:10px;}
+  .pillar p{font-size:14.5px; color:rgba(255,255,255,.9);}
+
+  /* ---------- JOURNEY ---------- */
+  .journey{background:var(--paper);}
+  .journey-track{
+    position:relative; min-height:300px; display:flex; align-items:center;
+  }
+  .journey-line{
+    position:absolute; top:calc(50% - 1px); left:0; right:0; height:2px;
+    background:rgba(46,42,61,.15); z-index:0; overflow:hidden;
+  }
+  .journey-line-fill{
+    position:absolute; top:0; left:0; height:100%;
+    width:calc(var(--progress, 0) * 100%);
+    background:var(--pink); transition:width .5s ease;
+  }
+  .journey-dots{
+    width:100%; position:relative; z-index:1;
+    display:grid; grid-template-columns:repeat(5,1fr); gap:14px;
+  }
+  .journey-step{
+    position:relative; display:flex; align-items:center; justify-content:center;
+  }
+  .journey-dot{
+    width:34px; height:34px; border-radius:50%; background:var(--paper-2);
+    border:2px solid rgba(46,42,61,.25); flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:600; color:var(--ink-soft);
+    transition:background .4s, border-color .4s, color .4s, transform .4s;
+  }
+  .journey-text{
+    position:absolute; left:50%; transform:translateX(-50%); width:160px; text-align:center;
+  }
+  .journey-step.below .journey-text{top:calc(100% + 18px);}
+  .journey-step.above .journey-text{bottom:calc(100% + 18px);}
+  .journey-text h3{font-family:'Fraunces',serif; font-size:15.5px; font-weight:500; margin-bottom:6px; transition:color .4s;}
+  .journey-text p{font-size:12.5px; color:var(--ink-soft); margin:0;}
+  .journey-step.active .journey-dot{background:var(--pink); border-color:var(--pink); color:#fff; transform:scale(1.1);}
+  .journey-step.active .journey-text h3{color:var(--pink);}
+
+  /* ---------- SUPPORT ---------- */
+  .support-grid{display:grid; grid-template-columns:1fr 1fr; gap:22px;}
+  .support-card{
+    background:#fff; border-radius:var(--radius); padding:32px 26px;
+    border:1px solid rgba(46,42,61,.08); min-height:190px;
+    display:flex; flex-direction:column; justify-content:space-between;
+    transition:transform .25s, box-shadow .25s;
+  }
+  .support-card:hover{transform:translateY(-4px); box-shadow:0 16px 30px -18px rgba(46,42,61,.25);}
+  .support-mark{
+    width:44px; height:44px; border-radius:12px; margin-bottom:20px;
+    display:flex; align-items:center; justify-content:center; font-family:'Fraunces',serif; font-size:18px; color:#fff;
+  }
+  .support-card.c1 .support-mark{background:var(--dark-blue);}
+  .support-card.c2 .support-mark{background:var(--mid-blue);}
+  .support-card.c3 .support-mark{background:var(--pink);}
+  .support-card h3{font-family:'Fraunces',serif; font-size:20px; font-weight:500; margin-bottom:8px;}
+  .support-card p{font-size:14px; color:var(--ink-soft);}
+  .support-tag{font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:.1em; color:var(--ink-soft); opacity:.75; display:block; margin-bottom:6px;}
+
+  /* ---------- SIGNATURE ---------- */
+  .signature{background:var(--paper-2);}
+  .signature-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:56px; align-items:center;}
+  .signature-photo{aspect-ratio:3/4; border-radius:var(--radius); overflow:hidden;}
+  .signature-photo img{width:100%; height:100%; object-fit:cover; display:block;}
+  .signature-copy p{font-size:16.5px; color:var(--ink-soft); max-width:520px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink); color:var(--cream); padding:64px 0 32px;}
+  .footer-top{display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px; margin-bottom:40px;}
+  footer h2{font-family:'Fraunces',serif; font-style:italic; font-weight:500; font-size:32px;}
+  .footer-links{display:flex; gap:22px; font-size:13px; opacity:.75;}
+  .footer-bottom{border-top:1px solid rgba(237,248,254,.15); padding-top:20px; font-size:12px; opacity:.55; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+
+  /* ---------- CTA BAND ---------- */
+  .cta-band{background:var(--paper-2);}
+  .cta-panel{
+    background:var(--paper); border:1px solid rgba(46,42,61,.08); border-radius:var(--radius);
+    padding:72px 40px; text-align:center; max-width:680px; margin:0 auto;
+  }
+  .cta-panel .eyebrow{display:block; margin-bottom:14px;}
+  .cta-panel h2{
+    font-weight:500; font-size:clamp(24px,3.2vw,32px);
+    margin:0 auto 30px; line-height:1.3; color:var(--ink);
+  }
+
+  /* ---------- FLOATING CONTACT BUTTON ---------- */
+  .floating-contact{
+    position:fixed; right:24px; bottom:24px; z-index:60;
+    background:var(--pink); color:#fff; padding:14px 22px; border-radius:100px;
+    font-weight:600; font-size:14px; display:flex; align-items:center; gap:8px;
+    box-shadow:0 10px 26px -8px rgba(224,87,122,.6);
+    transition:transform .2s, box-shadow .2s;
+  }
+  .floating-contact:hover{transform:translateY(-3px); box-shadow:0 14px 30px -8px rgba(224,87,122,.7);}
+  .floating-contact svg{flex-shrink:0;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:860px){
+    .hero-grid, .about-grid, .support-grid, .signature-grid{grid-template-columns:1fr;}
+    .circles{height:280px; order:-1;}
+    .pillars-grid{grid-template-columns:1fr;}
+    .navlinks{display:none;}
+
+    .journey-track{min-height:0; display:block;}
+    .journey-dots{display:flex; flex-direction:column; gap:34px;}
+    .journey-line{top:0; bottom:0; left:17px; right:auto; width:2px; height:auto;}
+    .journey-line-fill{
+      width:100%; height:calc(var(--progress, 0) * 100%);
+    }
+    .journey-step{justify-content:flex-start; align-items:flex-start;}
+    .journey-text, .journey-step.above .journey-text, .journey-step.below .journey-text{
+      position:static; transform:none; width:auto; text-align:left; margin-left:16px; top:auto; bottom:auto;
+    }
+  }
+  @media (max-width:600px){
+    .floating-contact{padding:14px;}
+    .floating-contact span.label{display:none;}
+    .calendly-wrap{padding:6px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo"><img src="YogaLogo.jpg" alt="Dari Logo" class="logo-mark">DARI<span class="dot">.</span></div>
+    <div class="navlinks">
+      <a href="#about">Über mich</a>
+      <a href="#pillars">Angebot</a>
+      <a href="#journey">Prozess</a>
+      <a href="#support">Support</a>
+      <a href="#contact">Kontakt</a>
+    </div>
+    <a class="nav-cta" href="#journey">Prozess entdecken</a>
+  </div>
+</nav>
+
+<a href="https://calendly.com/daria-wiessner-seg9/30min" target="_blank" rel="noopener" class="floating-contact" aria-label="15-Minuten Intro-Call buchen">
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+  <span class="label">15-Min Intro-Call buchen</span>
+</a>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Systemisches Coaching · Yoga · Pole Dance</span>
+      <h1>Wir sind <em>vieles</em>.</h1>
+      <p class="subline">Und das ist auch gut so.</p>
+      <p class="lead">Wir tragen viele Versionen von uns selbst in uns — und dürfen sie erweitern, neu entdecken oder wieder hervorholen.<br>Und doch bleiben wir manchmal in nur einer davon stecken: In Mustern oder Situationen, die sich wiederholen, ohne dass du genau weißt, warum.<br>Neue Perspektiven schaffen neue Erfahrungsmöglichkeiten: Erweitern wir deinen Blick, nimmst du auch mehr wahr — und genau darin liegt der Raum für Veränderung. Ich begleite dich dabei, deiner Passion zu folgen, mutige Entscheidungen zu treffen und auf deine innere Stimme zu hören.</p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="#journey">Prozess entdecken</a>
+        <a class="btn-ghost" href="#about">Mich kennenlernen</a>
+      </div>
+    </div>
+    <div class="circles" aria-hidden="true">
+      <div class="circle b10"><span>Bedacht</span></div>
+      <div class="circle b9"><span>Gelassen</span></div>
+      <div class="circle b8"><span>Passioniert</span></div>
+      <div class="circle b6"><span>Tiefgründig</span></div>
+      <div class="circle b5"><span>Liebevoll</span></div>
+      <div class="circle b4"><span>Verletzlich</span></div>
+      <div class="circle b3"><span>Lebendig</span></div>
+      <div class="circle b2"><span>Mutig</span></div>
+      <div class="circle b1"><span>Stark</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="portrait"><img src="Portrait.jpg" alt="Portrait von Dari"></div>
+    <div class="about-copy">
+      <span class="eyebrow">Über mich</span>
+      <h2 class="display" style="font-size:30px; font-weight:500; margin-bottom:18px;">Ich bin eine mutige und vielseitige Frau.</h2>
+      <p>Ich bin systemisch-integrative Coachin, Mediatorin, Yoga- und Pole-Dance-Lehrerin. Schon immer hatte ich viele Interessen, die sich nicht in ein einziges Feld pressen ließen. Ich habe BWL und Personalmanagement studiert und nie meine Liebe zu Tanz und Bewegung losgelassen. Nach Jahren in der Beratung habe ich angefangen, auf meine innere Stimme zu hören und mich mutig auf das zu fokussieren, was mich wirklich erfüllt. Genau diese Erfahrung treibt mich an: Menschen dabei zu begleiten, den Glauben an sich selbst, die eigene Kraft und das eigene Feuer wiederzuentdecken.</p>
+      <p>Ich bin überzeugt: Wir können werden, was wir wollen. Dafür brauchen wir Ehrlichkeit, Begleitung und eine klare Zielvorstellung — und wir müssen uns selbst genug wertschätzen, um unseren Träumen und Wünschen zu folgen, so kitschig das auch klingt.</p>
+      <div class="values">
+        <span class="value-pill">Ehrlichkeit</span>
+        <span class="value-pill">Authentizität</span>
+        <span class="value-pill">Selbstverwirklichung</span>
+        <span class="value-pill">Persönliches Wachstum</span>
+        <span class="value-pill">Positivität &amp; Vertrauen</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="journey" id="journey">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Der Prozess</span>
+      <h2>Der Weg des Coachings.</h2>
+      <p class="section-sub">Jeder Prozess verläuft individuell.</p>
+    </div>
+    <div class="journey-track">
+      <div class="journey-line"><div class="journey-line-fill"></div></div>
+      <div class="journey-dots">
+
+        <div class="journey-step below" data-step="1">
+          <div class="journey-dot">1</div>
+          <div class="journey-text">
+            <h3>Auftragsklärung</h3>
+            <p>Wir klären gemeinsam, wo du stehst und was du dir wirklich wünschst.</p>
+          </div>
+        </div>
+
+        <div class="journey-step above" data-step="2">
+          <div class="journey-dot">2</div>
+          <div class="journey-text">
+            <h3>Neue Perspektiven</h3>
+            <p>Wir schauen auf deine Situation aus neuen Blickwinkeln.</p>
+          </div>
+        </div>
+
+        <div class="journey-step below" data-step="3">
+          <div class="journey-dot">3</div>
+          <div class="journey-text">
+            <h3>Dein Identitätsmuster</h3>
+            <p>Was ist der rote Faden, der sich bisher durch dein Leben gezogen hat?</p>
+          </div>
+        </div>
+
+        <div class="journey-step above" data-step="4">
+          <div class="journey-dot">4</div>
+          <div class="journey-text">
+            <h3>Die Wachstumsphase</h3>
+            <p>Wir probieren neue Denk- und Verhaltensweisen aus.</p>
+          </div>
+        </div>
+
+        <div class="journey-step below" data-step="5">
+          <div class="journey-dot">5</div>
+          <div class="journey-text">
+            <h3>Integration</h3>
+            <p>Wir verankern das Neue in deinem Alltag.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pillars" class="pillars-section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Was ich anbiete</span>
+      <h2>Drei Disziplinen, eine Praxis.</h2>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar p1">
+        <h3>Coaching</h3>
+        <p>Ich begleite dich durch berufliche Umbrüche, auf dem Weg zu dir selbst und – vor allem – beim Schritt hinaus in die Welt. Der Weg in die Aktion führt immer zuerst durch die Reflexion: Gemeinsam gehen wir dem roten Faden deines Lebens nach, um zu verstehen, welche Haltungen und Verhaltensweisen dich bisher getragen haben – und welche du künftig leben möchtest.</p>
+      </div>
+      <div class="pillar p2">
+        <h3>Yoga</h3>
+        <p>In einem gesunden Körper lebt ein gesunder Geist. Oft spüren wir Emotionen zuerst im Körper – manchmal spüren wir nur den Körper, ohne die dazugehörige Emotion benennen zu können. Yoga kann Workout sein, Yoga kann Meditation sein, und Yoga kann genau das sein, was du brauchst, bevor du wieder Klarheit spürst. In unserer gemeinsamen Praxis richten wir uns danach, was du gerade brauchst.</p>
+      </div>
+      <div class="pillar p3">
+        <h3>Pole Dance</h3>
+        <p>Pole Dance kann sexy sein, es kann sinnlich sein, es kann Mut sein oder pures Gefühl. Pole Dance ist meine gewählte Ausdrucksform. Im Tanz, besonders an der Stange, steckt so viel Potential, um sich wieder- oder neu zu entdecken und sich in seiner weiblichen Kraft zu spüren. Ich ergänze es daher gerne auf Wunsch als Tool im Coaching-Prozess.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="support">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Extras &amp; Begleitung</span>
+      <h2>Begleitung über die Session hinaus.</h2>
+    </div>
+    <div class="support-grid">
+      <div class="support-card c1">
+        <div class="support-mark"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5.5c2-1 5-1 7 .5v13c-2-1.5-5-1.5-7-.5v-13z"/><path d="M21 5.5c-2-1-5-1-7 .5v13c2-1.5 5-1.5 7-.5v-13z"/></svg></div>
+        <div>
+          <span class="support-tag">Notion Knowledge Base</span>
+          <h3>Deine eigene Wissensbasis</h3>
+          <p>Du erhältst deine Online Bibliothek mit Übungen, Reflexionsfragen und Ressourcen zwischen den Sessions.</p>
+        </div>
+      </div>
+      <div class="support-card c3">
+        <div class="support-mark"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.45 1 1.15 1 1.9V16h5v-.2c0-.75.4-1.45 1-1.9A6 6 0 0 0 12 3z"/></svg></div>
+        <div>
+          <span class="support-tag">Hausaufgaben</span>
+          <h3>Vom Erkennen ins Tun</h3>
+          <p>Du erhältst von mir Hausaufgaben und kleine Impulse und Übungen für zwischen den Sessions, damit das Neue im Alltag ankommt.</p>
+        </div>
+      </div>
+      <div class="support-card c2">
+        <div class="support-mark"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1.8"/><path d="M5 17c1.8-1.2 3-2 3-4.2 0-1 .6-1.8 1.6-2.1L12 10l2.4.7c1 .3 1.6 1.1 1.6 2.1 0 2.2 1.2 3 3 4.2"/><path d="M4 19.5c2.4-1.4 5.2-2 8-2s5.6.6 8 2"/></svg></div>
+        <div>
+          <span class="support-tag">Yoga &amp; Coaching</span>
+          <h3>Yoga und Coaching</h3>
+          <p>Erhalte Atemtechniken, Meditationen oder Inspiration für deine Asanapraxis in einem holistischen Ansatz.</p>
+        </div>
+      </div>
+      <div class="support-card c1">
+        <div class="support-mark"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13c0-3 2-5 4-5s3 1 3 3v5"/><path d="M20 13c0-3-2-5-4-5s-3 1-3 3v5"/><path d="M8 16c0 1.5 1.5 3 4 3s4-1.5 4-3"/></svg></div>
+        <div>
+          <span class="support-tag">WhatsApp Support</span>
+          <h3>Du bist nicht allein</h3>
+          <p>Direkter Draht zu mir zwischen den Terminen — für Fragen, Gedanken oder ein kurzes Update, unkompliziert per WhatsApp.</p>
+        </div>
+      </div>
+      <div class="support-card c3">
+        <div class="support-mark"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></div>
+        <div>
+          <span class="support-tag">Einzelsessions</span>
+          <h3>90 Minuten ganz für dich</h3>
+          <p>Wöchentlich oder alle zwei Wochen — im Rhythmus, der zu deinem Prozess passt.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="signature">
+  <div class="wrap signature-grid">
+    <div class="signature-copy">
+      <span class="eyebrow">Persönlichkeit &amp; Beruf</span>
+      <h2 class="display" style="font-size:30px; font-weight:500; margin-bottom:18px;">Ich selbst sein — auch bei der Arbeit.</h2>
+      <p>Innovation entsteht dort, wo wir aufhören, unsere Persönlichkeit von unserem Beruf zu trennen. Ich bringe mit, wer ich bin — mutig, sinnlich, klar — und genau das macht meine Arbeit lebendig.</p>
+    </div>
+    <div class="signature-photo"><img src="PoledanceBeratung.JPG" alt="Dari in geschäftlicher Kleidung an der Pole Dance Stange"></div>
+  </div>
+</section>
+
+<section class="cta-band" id="contact">
+  <div class="wrap">
+    <div class="cta-panel">
+      <span class="eyebrow">Kontakt</span>
+      <h2 class="display">Was auch immer dich gerade aufhält — lass uns gemeinsam draufschauen.</h2>
+      <a class="btn-primary" href="https://calendly.com/daria-wiessner-seg9/30min" target="_blank" rel="noopener">15-Minuten Intro-Call buchen</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <h2>Bereit, den ersten Schritt zu gehen?</h2>
+      <a class="btn-primary" href="https://calendly.com/daria-wiessner-seg9/30min" target="_blank" rel="noopener">15-Minuten Intro-Call buchen</a>
+    </div>
+    <div class="footer-links">
+      <a href="#about">Über mich</a>
+      <a href="#pillars">Angebot</a>
+      <a href="#journey">Prozess</a>
+      <a href="#support">Support</a>
+      <a href="#contact">Kontakt</a>
+    </div>
+    <div class="footer-bottom">
+      <span>© Dari — Coaching · Yoga · Pole Dance</span>
+      <span>Ich lebe in vielen.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var steps = Array.prototype.slice.call(document.querySelectorAll('.journey-step'));
+  var fill = document.querySelector('.journey-line-fill');
+  if(!steps.length || !window.IntersectionObserver) return;
+
+  var current = -1;
+
+  function render(){
+    steps.forEach(function(step, i){
+      step.classList.toggle('active', i <= current);
+    });
+    if(fill) fill.style.setProperty('--progress', steps.length > 1 ? current / (steps.length - 1) : 0);
+  }
+
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        current = steps.indexOf(entry.target);
+        render();
+      }
+    });
+  }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+
+  steps.forEach(function(step){ observer.observe(step); });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Dari CI Farbpalette</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: #f4f2ee;
+    padding: 40px 20px;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 28px; color: #3a3a3a; margin-bottom: 4px; }
+  p.sub { color: #7a7a7a; margin-bottom: 32px; font-size: 15px; }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .swatch {
+    border-radius: 10px;
+    min-height: 190px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 18px;
+    position: relative;
+  }
+  .swatch .name {
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+  .swatch .hex {
+    font-family: 'Courier New', monospace;
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .swatch .role {
+    font-size: 12px;
+    opacity: .85;
+    margin-top: 2px;
+  }
+  .full {
+    grid-column: 1 / -1;
+    min-height: 130px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .dark   { background: #707FB6; color: #EDF8FE; }
+  .mid    { background: #7F90D5; color: #EDF8FE; }
+  .cream  { background: #EDF8FE; color: #4A5578; border: 1px solid #dfe6f2; }
+  .pink   { background: #E0577A; color: #FFF6F0; }
+  .butter { background: #FAE29E; color: #6B5322; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>DARI — CI Farbpalette</h1>
+  <p class="sub">4 Kernfarben + 1 Neutralton · warm, einladend, leicht feminin, nicht zu süß</p>
+
+  <p style="font-size:13px;color:#9a9a9a;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Kernfarben</p>
+  <div class="grid">
+    <div class="swatch dark">
+      <div class="name">Dunkelblau</div>
+      <div class="hex">#707FB6</div>
+      <div class="role">Akzent / Tiefe · aus dem Kreis-Schatten</div>
+    </div>
+    <div class="swatch mid">
+      <div class="name">Mittelblau</div>
+      <div class="hex">#7F90D5</div>
+      <div class="role">Basisfarbe / Hintergrund</div>
+    </div>
+    <div class="swatch pink">
+      <div class="name">Warmes Pink</div>
+      <div class="hex">#E0577A</div>
+      <div class="role">Highlight, Call-to-Action, Wärme</div>
+    </div>
+    <div class="swatch butter">
+      <div class="name">Buttergelb</div>
+      <div class="hex">#FAE29E</div>
+      <div class="role">Instagram-Schriftfarbe, freudiger Akzent</div>
+    </div>
+  </div>
+
+  <p style="font-size:13px;color:#9a9a9a;text-transform:uppercase;letter-spacing:1px;margin:24px 0 10px;">Neutralton (kein Markenfarbe im engeren Sinn — für Flächen &amp; Text)</p>
+  <div class="grid">
+    <div class="swatch full cream" style="min-height:90px;">
+      <div>
+        <div class="name">Hellblau / Creme</div>
+        <div class="hex">#EDF8FE</div>
+        <div class="role">Schrift auf dunklem Grund, Hintergrundflächen</div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
