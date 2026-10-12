@@ -67,6 +67,18 @@
     background:var(--ink); color:var(--paper); padding:9px 18px; border-radius:100px;
     font-size:13px; font-weight:600;
   }
+  /* Burger-Menü (nur in der Handy-Ansicht sichtbar) */
+  .nav-toggle{
+    display:none; flex-direction:column; justify-content:center; gap:5px; flex-shrink:0;
+    width:40px; height:40px; padding:10px 9px; border:0; border-radius:10px;
+    background:transparent; cursor:pointer;
+  }
+  .nav-toggle span{display:block; width:100%; height:2px; border-radius:2px; background:var(--dark-blue); transition:transform .25s, opacity .2s, background .2s;}
+  .nav-toggle:hover span{background:var(--mid-blue);}
+  .nav-toggle:focus-visible, .navlinks a:focus-visible{outline:2px solid var(--mid-blue); outline-offset:2px; border-radius:6px;}
+  nav.open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  nav.open .nav-toggle span:nth-child(2){opacity:0;}
+  nav.open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
   /* ---------- HERO ---------- */
   .hero{padding:96px 0 60px; position:relative; overflow:hidden;}
@@ -149,25 +161,6 @@
     background:#fff; border:1px solid rgba(46,42,61,.1); padding:8px 16px; border-radius:100px;
     font-size:13px; font-weight:500;
   }
-
-  /* ---------- PILLARS ---------- */
-  .pillars-section{background:var(--paper-2);}
-  .pillars-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
-  .pillar{
-    border-radius:var(--radius); padding:34px; color:#fff; min-height:220px;
-    display:flex; flex-direction:column; justify-content:space-between;
-    transition:transform .25s, box-shadow .25s;
-  }
-  .pillar:hover{transform:translateY(-4px); box-shadow:0 16px 30px -18px rgba(46,42,61,.25);}
-  .pillar.p1{background:var(--dark-blue);}
-  .pillar.p2{background:var(--mid-blue);}
-  .pillar.p3{background:var(--pink);}
-  .pillar-mark{
-    width:44px; height:44px; border-radius:12px; margin-bottom:20px; background:rgba(255,255,255,.18);
-    display:flex; align-items:center; justify-content:center; font-family:'Fraunces',serif; font-size:20px; color:#fff;
-  }
-  .pillar h3{font-family:'Fraunces',serif; font-size:22px; font-weight:500; margin-bottom:10px;}
-  .pillar p{font-size:14.5px; color:rgba(255,255,255,.9);}
 
   /* ---------- JOURNEY ---------- */
   .journey{background:var(--paper);}
@@ -269,8 +262,19 @@
   @media (max-width:860px){
     .hero-grid, .about-grid, .support-grid, .signature-grid{grid-template-columns:1fr;}
     .circles{height:480px; margin-bottom:8px;}
-    .pillars-grid{grid-template-columns:1fr;}
     .navlinks{display:none;}
+    .nav-toggle{display:flex;}
+    .nav-cta{margin-left:auto;}
+    nav.open .navlinks{
+      display:flex; flex-direction:column; gap:0;
+      position:absolute; top:100%; left:0; right:0;
+      background:var(--paper); border-bottom:1px solid rgba(46,42,61,.08);
+      box-shadow:0 18px 24px -18px rgba(46,42,61,.25);
+      padding:6px 20px 14px;
+    }
+    nav.open .navlinks a{opacity:1; padding:14px 4px; font-size:16px; color:var(--ink); border-bottom:1px solid rgba(46,42,61,.06);}
+    nav.open .navlinks a:last-child{border-bottom:0;}
+    nav.open .navlinks a:hover{color:var(--dark-blue);}
     nav .wrap{padding:14px 20px; gap:10px;}
     .logo{font-size:17px; gap:8px;}
     .logo-mark{width:30px; height:30px;}
@@ -293,6 +297,10 @@
     .cta-panel{padding:24px 24px;}
     .cta-panel h2{max-width:100%;}
   }
+  @media (max-width:420px){
+    .nav-cta{display:none;}
+    .nav-toggle{margin-left:auto;}
+  }
 </style>
 </head>
 <body>
@@ -300,14 +308,16 @@
 <nav>
   <div class="wrap">
     <div class="logo"><img src="YogaLogo.jpg" alt="Dari Logo" class="logo-mark">DARI<span class="dot">.</span>MOVES</div>
-    <div class="navlinks">
+    <div class="navlinks" id="main-menu">
       <a href="#about">Über mich</a>
-      <a href="#pillars">Angebot</a>
       <a href="#journey">Prozess</a>
       <a href="#support">Support</a>
       <a href="#contact">Kontakt</a>
     </div>
     <a class="nav-cta" href="#journey">Prozess entdecken</a>
+    <button class="nav-toggle" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="main-menu">
+      <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+    </button>
   </div>
 </nav>
 
@@ -428,29 +438,6 @@
   </div>
 </section>
 
-<section id="pillars" class="pillars-section">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Was ich anbiete</span>
-      <h2>Drei Disziplinen, eine Praxis.</h2>
-    </div>
-    <div class="pillars-grid">
-      <div class="pillar p1">
-        <h3>Coaching</h3>
-        <p>Ich begleite dich durch berufliche Umbrüche, auf dem Weg zu dir selbst und – vor allem – beim Schritt hinaus in die Welt. Der Weg in die Aktion führt immer zuerst durch die Reflexion: Gemeinsam gehen wir dem roten Faden deines Lebens nach, um zu verstehen, welche Haltungen und Verhaltensweisen dich bisher getragen haben – und welche du künftig leben möchtest.</p>
-      </div>
-      <div class="pillar p2">
-        <h3>Yoga</h3>
-        <p>In einem gesunden Körper lebt ein gesunder Geist. Oft spüren wir Emotionen zuerst im Körper – manchmal spüren wir nur den Körper, ohne die dazugehörige Emotion benennen zu können. Yoga kann Workout sein, Yoga kann Meditation sein, und Yoga kann genau das sein, was du brauchst, bevor du wieder Klarheit spürst. In unserer gemeinsamen Praxis richten wir uns danach, was du gerade brauchst.</p>
-      </div>
-      <div class="pillar p3">
-        <h3>Pole Dance</h3>
-        <p>Pole Dance kann sexy sein, es kann sinnlich sein, es kann Mut sein oder pures Gefühl. Pole Dance ist meine gewählte Ausdrucksform. Im Tanz, besonders an der Stange, steckt so viel Potential, um sich wieder- oder neu zu entdecken und sich in seiner weiblichen Kraft zu spüren. Ich ergänze es daher gerne auf Wunsch als Tool im Coaching-Prozess.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section id="support">
   <div class="wrap">
     <div class="section-head">
@@ -521,7 +508,6 @@
     </div>
     <div class="footer-links">
       <a href="#about">Über mich</a>
-      <a href="#pillars">Angebot</a>
       <a href="#journey">Prozess</a>
       <a href="#support">Support</a>
       <a href="#contact">Kontakt</a>
@@ -533,6 +519,28 @@
     </div>
   </div>
 </footer>
+
+<script>
+(function(){
+  var nav = document.querySelector('nav');
+  var toggle = nav && nav.querySelector('.nav-toggle');
+  if(!toggle) return;
+
+  function setOpen(open){
+    nav.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    toggle.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
+  }
+
+  toggle.addEventListener('click', function(){ setOpen(!nav.classList.contains('open')); });
+  Array.prototype.forEach.call(nav.querySelectorAll('.navlinks a'), function(link){
+    link.addEventListener('click', function(){ setOpen(false); });
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && nav.classList.contains('open')){ setOpen(false); toggle.focus(); }
+  });
+})();
+</script>
 
 <script>
 (function(){
