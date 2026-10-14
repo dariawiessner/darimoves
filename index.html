@@ -22,6 +22,7 @@
     --ink:#2E2A3D;
     --ink-soft:#5C5870;
     --dark-blue:#707FB6;
+    --button-blue:#5A6AA6; /* dunkleres Blau für Buttons, Kontrast mit Weiß 5,2:1 */
     --mid-blue:#7F90D5;
     --pink:#E0577A;
     --butter:#FAE29E;
@@ -100,9 +101,9 @@
   .hero p.lead strong{color:var(--ink); font-weight:600;}
   .hero-ctas{display:flex; gap:14px; flex-wrap:wrap;}
   .btn-primary{
-    background:var(--pink); color:#fff; padding:14px 26px; border-radius:100px;
+    background:var(--button-blue); color:#fff; padding:14px 26px; border-radius:100px;
     font-weight:600; font-size:15px; display:inline-block; transition:transform .2s, box-shadow .2s;
-    box-shadow:0 8px 20px -6px rgba(224,87,122,.55);
+    box-shadow:0 8px 20px -6px rgba(90,106,166,.55);
   }
   .btn-primary:hover{transform:translateY(-2px);}
   .btn-ghost{
@@ -246,16 +247,19 @@
     font-weight:500; font-size:19px;
     margin:0; line-height:1.4; color:var(--ink); max-width:460px;
   }
+  .cta-alt{font-size:14px; color:var(--ink-soft); margin-top:-6px;}
+  .cta-alt a{color:var(--button-blue); font-weight:600; text-decoration:underline; text-underline-offset:3px;}
+  .cta-alt a:hover{color:var(--mid-blue);}
 
   /* ---------- FLOATING CONTACT BUTTON ---------- */
   .floating-contact{
     position:fixed; right:24px; bottom:24px; z-index:60;
-    background:var(--pink); color:#fff; padding:14px 22px; border-radius:100px;
+    background:var(--button-blue); color:#fff; padding:14px 22px; border-radius:100px;
     font-weight:600; font-size:14px; display:flex; align-items:center; gap:8px;
-    box-shadow:0 10px 26px -8px rgba(224,87,122,.6);
+    box-shadow:0 10px 26px -8px rgba(90,106,166,.6);
     transition:transform .2s, box-shadow .2s;
   }
-  .floating-contact:hover{transform:translateY(-3px); box-shadow:0 14px 30px -8px rgba(224,87,122,.7);}
+  .floating-contact:hover{transform:translateY(-3px); box-shadow:0 14px 30px -8px rgba(90,106,166,.7);}
   .floating-contact svg{flex-shrink:0;}
 
   /* ---------- RESPONSIVE ---------- */
@@ -434,7 +438,8 @@
     <span class="eyebrow cta-eyebrow">Kontakt</span>
     <div class="cta-panel">
       <h2 class="display">Was auch immer dich gerade aufhält: Lass uns gemeinsam draufschauen.</h2>
-      <a class="btn-primary" href="https://calendly.com/daria-wiessner-seg9/30min" target="_blank" rel="noopener">Einfach kurz kennenlernen</a>
+      <a class="btn-primary" href="https://calendly.com/daria-wiessner-seg9/30min" target="_blank" rel="noopener">Kennenlernen</a>
+      <p class="cta-alt">Oder schreib mir einfach:<br><a href="mailto:hallo@darimoves.de">hallo@darimoves.de</a></p>
     </div>
   </div>
 </section>
